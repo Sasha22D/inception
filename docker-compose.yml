@@ -1,0 +1,13 @@
+services:
+  nginx:
+    image: nginx:1.0
+    ports:
+      - 80:80
+  wordpress:
+    image: wordpress:1.0
+    environment:
+      - DB_NAME=$DB_NAME
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_HOST=$DB_HOST
+  #mariadb:
