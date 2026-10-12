@@ -1,7 +1,15 @@
 FROM debian:bookworm
 
+WORKDIR /app
+
 RUN apt-get update && apt-get install mariadb-server mariadb-client -y
 
-RUN service mariadb start
+COPY conf/50-server.cnf .
+
+COPY entry.sh . 
+
+COPY conf/my.cnf .
+
+ENTRYPOINT ["./entry.sh"]
 
 CMD ["mysqld_safe"]
