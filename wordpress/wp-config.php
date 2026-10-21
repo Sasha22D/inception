@@ -26,7 +26,7 @@ define( 'DB_NAME', '$DB_NAME' );
 define( 'DB_USER', '$DB_USER' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'DB_PASSWORD' );
+define( 'DB_PASSWORD', '$DB_USER_PASS' );
 
 /** Database hostname */
 define( 'DB_HOST', '$DB_HOST' );
