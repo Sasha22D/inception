@@ -12,4 +12,6 @@ RUN cd /var/www/html && wget https://wordpress.org/latest.tar.gz && tar -xvzf la
 
 COPY wp-config.php /var/www/html/wordpress/
 
+COPY www.conf /etc/php/8.2/fpm/pool.d/
+
 CMD ["php-fpm8.2", "-F"]
