@@ -5,6 +5,8 @@ services:
       - 80:80
     volumes:
       - wordpress_volume:/var/www/html/wordpress
+    depends_on:
+      - wordpress
   wordpress:
     image: wordpress:1.0
     environment:
@@ -14,6 +16,8 @@ services:
       - DB_HOST=$DB_HOST
     volumes:
       - wordpress_volume:/var/www/html/wordpress
+    depends_on:
+      - mariadb
   mariadb:
     image: mariadb:1.0
     environment:
