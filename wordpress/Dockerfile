@@ -4,7 +4,7 @@ RUN apt-get update -y
 
 RUN apt-get install php8.2-fpm -y
 
-RUN apt-get install wget -y
+RUN apt-get install wget php8.2-mysql -y
 
 RUN mkdir -p /var/www/html
 
