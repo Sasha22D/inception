@@ -8,7 +8,7 @@ COPY entry.sh .
 
 RUN chmod +x entry.sh
 
-COPY conf/my.cnf .
+COPY conf/50-server.cnf .
 
 ENTRYPOINT ["./entry.sh"]
 

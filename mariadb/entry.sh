@@ -33,6 +33,6 @@ echo ""
 
 service mariadb stop
 
-mv my.cnf /etc/mysql/
+mv 50-server.cnf /etc/mysql/mariadb.conf.d/
 
 exec "$@"
