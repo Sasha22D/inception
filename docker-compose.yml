@@ -3,6 +3,8 @@ services:
     image: nginx:1.0
     ports:
       - 443:443
+    networks:
+      - inception_network
     volumes:
       - wordpress_volume:/var/www/html/wordpress
     depends_on:
@@ -14,6 +16,8 @@ services:
       - DB_USER=$DB_USER
       - DB_USER_PASS=$DB_USER_PASS
       - DB_HOST=$DB_HOST
+    networks:
+      - inception_network
     volumes:
       - wordpress_volume:/var/www/html/wordpress
     depends_on:
@@ -25,8 +29,15 @@ services:
       - DB_NAME=$DB_NAME
       - DB_USER=$DB_USER
       - DB_USER_PASS=$DB_USER_PASS
+    networks:
+      - inception_network
     volumes:
       - maria_volume:/var/lib/mysql
+
+networks:
+  inception_network:
+    driver: bridge
+
 volumes:
   maria_volume:
     driver: local
