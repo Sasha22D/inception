@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install nginx openssl -y
 
-COPY nginx.conf /etc/nginx
+COPY conf/nginx.conf /etc/nginx
 
 COPY entry.sh .
 
