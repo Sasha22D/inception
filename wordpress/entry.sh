@@ -12,8 +12,8 @@ echo "Check si wp-config existe"
 if [ ! -f wp-config.php ]; then
   wp config create \
     --dbname="$DB_NAME" \
-    --dbuser="$DB_USER" \
-    --dbpass="$DB_USER_PASS" \
+    --dbuser="$DB_ADMIN" \
+    --dbpass="$DB_ADMIN_PASS" \
     --dbhost="$DB_HOST"
 fi
 
