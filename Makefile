@@ -13,7 +13,7 @@ all: up
 build:
 	@for service in $(SERVICES); do \
 		echo "Building image: $$service"; \
-		docker build -t $(NAME)-$$service srcs/requirements/$$service; \
+		docker build -t $$service:1.0 srcs/requirements/$$service; \
 	done
 
 ## Build puis lance les conteneurs en arrière-plan
@@ -50,7 +50,7 @@ clean:
 ## Supprime aussi les images construites par le projet
 fclean: clean
 	@for service in $(SERVICES); do \
-		docker rmi -f $(NAME)-$$service 2>/dev/null || true; \
+		docker rmi -f $$service:1.0 2>/dev/null || true; \
 	done
 
 ## Clean puis rebuild + relance
