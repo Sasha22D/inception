@@ -18,7 +18,7 @@ COPY entry.sh .
 
 RUN chmod +x entry.sh
 
-COPY www.conf /etc/php/8.2/fpm/pool.d/
+COPY conf/www.conf /etc/php/8.2/fpm/pool.d/
 
 ENTRYPOINT ["./entry.sh"]
 
