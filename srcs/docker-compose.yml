@@ -7,6 +7,8 @@ services:
       - inception_network
     volumes:
       - wordpress_volume:/var/www/html/wordpress
+    restart:
+      unless-stopped
     depends_on:
       - wordpress
   wordpress:
@@ -20,6 +22,8 @@ services:
       - inception_network
     volumes:
       - wordpress_volume:/var/www/html/wordpress
+    restart:
+      unless-stopped
     depends_on:
       - mariadb
   mariadb:
@@ -35,6 +39,8 @@ services:
       - inception_network
     volumes:
       - maria_volume:/var/lib/mysql
+    restart:
+      unless-stopped
 
 networks:
   inception_network:
