@@ -5,12 +5,12 @@ cd /var/www/html/wordpress/
 
 echo "Check si Wordpress est installé"
 if [ ! -f wp-includes/version.php ]; then
-  wp core download --skip-content
+  wp core download --allow-root
 fi
 
 echo "Check si wp-config existe"
 if [ ! -f wp-config.php ]; then
-  wp config create \
+  wp config create --allow-root \
     --dbname="$DB_NAME" \
     --dbuser="$DB_ADMIN" \
     --dbpass="$DB_ADMIN_PASS" \
