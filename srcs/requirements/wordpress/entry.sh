@@ -13,7 +13,7 @@ if [ ! -f wp-config.php ]; then
   wp config create --allow-root \
     --dbname="$DB_NAME" \
     --dbuser="$DB_ADMIN" \
-    --dbpass="$DB_ADMIN_PASS" \
+    --dbpass="$DB_ADMIN_PASS_FILE" \
     --dbhost="$DB_HOST"
 fi
 

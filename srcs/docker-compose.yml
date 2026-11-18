@@ -14,14 +14,16 @@ services:
   wordpress:
     image: wordpress:1.0
     environment:
-      - DB_NAME=$DB_NAME
-      - DB_ADMIN=$DB_ADMIN
-      - DB_ADMIN_PASS=$DB_ADMIN_PASS
-      - DB_HOST=$DB_HOST
+      DB_NAME: $DB_NAME
+      DB_ADMIN: $DB_ADMIN
+      DB_ADMIN_PASS_FILE: /run/secrets/db_admin_password
+      DB_HOST: $DB_HOST
     networks:
       - inception_network
     volumes:
       - wordpress_volume:/var/www/html/wordpress
+    secrets:
+      - db_admin_password
     restart:
       unless-stopped
     depends_on:
@@ -29,16 +31,20 @@ services:
   mariadb:
     image: mariadb:1.0
     environment:
-      - DB_ROOT_PASS=$DB_ROOT_PASS
-      - DB_NAME=$DB_NAME
-      - DB_ADMIN=$DB_ADMIN
-      - DB_ADMIN_PASS=$DB_ADMIN_PASS
-      - DB_USER=$DB_USER
-      - DB_USER_PASS=$DB_USER_PASS
+      DB_ROOT_PASS_FILE: /run/secrets/mysql_root_password
+      DB_NAME: $DB_NAME
+      DB_ADMIN: $DB_ADMIN
+      DB_ADMIN_PASS_FILE: /run/secrets/db_admin_password
+      DB_USER: $DB_USER
+      DB_USER_PASS_FILE: /run/secrets/db_user_password
     networks:
       - inception_network
     volumes:
       - maria_volume:/var/lib/mysql
+    secrets:
+      - mysql_root_password
+      - db_user_password
+      - db_admin_password
     restart:
       unless-stopped
 
@@ -59,3 +65,11 @@ volumes:
       type: none
       o: bind
       device: /home/sadaniel/data/wordpress_vol
+
+secrets:
+  db_admin_password:
+    file: ../secrets/db_admin_password.txt
+  mysql_root_password:
+    file: ../secrets/mysql_root_password.txt
+  db_user_password:
+    file: ../secrets/db_user_password.txt
