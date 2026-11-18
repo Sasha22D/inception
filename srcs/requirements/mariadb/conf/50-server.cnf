@@ -12,7 +12,7 @@
 # * Basic Settings
 #
 
-#user                    = mysql
+user                    = root
 pid-file                = /run/mysqld/mysqld.pid
 basedir                 = /usr
 #datadir                 = /var/lib/mysql
@@ -73,7 +73,7 @@ bind-address = 0.0.0.0
 #       settings you may need to change.
 #server-id              = 1
 #log_bin                = /var/log/mysql/mysql-bin.log
-expire_logs_days        = 10
+#expire_logs_days        = 10
 #max_binlog_size        = 100M
 
 #

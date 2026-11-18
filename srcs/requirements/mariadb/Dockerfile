@@ -10,6 +10,10 @@ RUN chmod +x entry.sh
 
 COPY conf/50-server.cnf .
 
+RUN mkdir -p /var/run/mysqld
+
+RUN chown mysql:mysql /var/run/mysqld
+
 ENTRYPOINT ["./entry.sh"]
 
-CMD ["mysqld_safe"]
+CMD ["mysqld"]
